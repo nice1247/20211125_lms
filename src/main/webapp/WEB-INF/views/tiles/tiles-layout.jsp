@@ -17,10 +17,10 @@
 				</td>
 			</tr>
 			<tr>
-				<td width= 20%>
+				<td width= "120" height="250">
 					<tiles:insertAttribute name="side"/>
 				</td>
-				<td width = 80%>
+				<td width = "250">
 					<tiles:insertAttribute name="body"/>
 				</td>
 			</tr>
