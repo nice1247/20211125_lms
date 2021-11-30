@@ -19,12 +19,12 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
 		<property name="configLocation" value="classpath:config/mybatis-config.xml"/>
-		<property name="mapperLocations" value="classpath*:co/nero/lms/**/service/*-map.xml"/>
+		<property name="mapperLocations" value="classpath*:co/nero/WebExam/**/service/*-map.xml"/>
 	</bean>
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"/>
 	</bean>
 	
-	<mybatis-spring:scan base-package="co.nero.lms"/>	
+	<mybatis-spring:scan base-package="co.nero.WebExam"/>	
 </beans>

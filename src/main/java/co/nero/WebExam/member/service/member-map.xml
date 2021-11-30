@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.nero.WebExam.member.service.MemberMapper">
+<select id="memberSelectList" resultType="co.nero.WebExam.member.service.MemberVO">
+SELECT * FROM WEBMEMBER
+</select>
+
+<select id="memberSelect" resultType="co.nero.WebExam.member.service.MemberVO">
+SELECT * FROM WEBMEMBER WHERE ID = #{id}
+<if test="password != null">and password = #{password}</if>
+</select>
+
+<insert id="memberInsert" parameterType="co.nero.WebExam.member.service.MemberVO">
+INSERT INTO WEBMEMBER VALUES(#{id}, #{password}, #{name}, #{tel}, #{address}, #{author})
+</insert>
+
+<delete id="memberDelete" parameterType="co.nero.WebExam.member.service.MemberVO">
+DELETE FROM WEBMEMBER WHERE ID = #{id}
+</delete>
+
+<update id="memberUpdate" parameterType="co.nero.WebExam.member.service.MemberVO">
+UPDATE WEBMEMBER SET PASSWORD = #{password}, NAME = #{name}, TEL = #{tel}, ADDRESS = #{address}, AUTHOR = #{author} WHERE ID = #{id}
+</update>
+<select id="isCheckId" resultType="boolean">
+SELECT CASE WHEN(COUNT(*) = 1) THEN 'FALSE' ELSE 'TRUE' END
+FROM WEBMEMBER
+WHERE ID = #{id}
+</select>
+
+</mapper>

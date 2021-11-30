@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.nero.WebExam.photo.service.PhotoMapper">
+	<select id="photoSelectList"
+		resultType="co.nero.WebExam.photo.service.PhotoVO">
+		SELECT * FROM WEBPHOTO
+	</select>
+
+	<select id="photoSelect"
+		resultType="co.nero.WebExam.photo.service.PhotoVO">
+		SELECT * FROM WEBPHOTO WHERE NO =#{no}
+	</select>
+
+	<insert id="photoInsert"
+		parameterType="co.nero.WebExam.photo.service.PhotoVO">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT
+			MAX(NO)+1 FROM WEBNOTICE
+		</selectKey>
+		INSERT INTO WEBPHOTO VALUES(#{no}, #{title}, #{subject}, #{image})
+	</insert>
+
+	<delete id="photoDelete"
+		parameterType="co.nero.WebExam.photo.service.PhotoVO">
+		DELETE FROM WEBPHOTO WHERE NO = #{no}
+	</delete>
+
+	<update id="photoUpdate"
+		parameterType="co.nero.WebExam.photo.service.PhotoVO">
+		UPDATE WEBPHOTO SET TITLE=${title}, SUBJECT =
+		#{subject}, IMAGE = #{image} WHERE NO = #{no}
+	</update>
+</mapper>

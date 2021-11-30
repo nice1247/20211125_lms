@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>footer</h2>
+	<div class="row" id="footer">
+		<div class="col-md-12 text-center">
+			<p class="copyright-text">Copyright &copy; 2021 JJ's page</p>
+		</div>
+	</div>
+
 </body>
 </html>

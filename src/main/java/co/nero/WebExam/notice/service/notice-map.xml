@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.nero.WebExam.notice.service.NoticeMapper">
+	<select id="noticeSelectList" resultType="co.nero.WebExam.notice.service.NoticeVO">
+		SELECT * FROM WEBNOTICE
+	</select>
+	<select id="noticeSelect" resultType="co.nero.WebExam.notice.service.NoticeVO">
+		SELECT * FROM WEBNOTICE WHERE NO = #{no}
+	</select>
+	<select id="noticeSearchList" parameterType="String" resultType = "co.nero.WebExam.notice.service.NoticeVO">
+		SELECT * FROM WEBNOTICE 
+		WHERE SUBJECT LIKE '%'||#{searchKey}||'%'
+	</select>
+	<insert id="noticeInsert" parameterType="co.nero.WebExam.notice.service.NoticeVO">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT MAX(NO)+1 FROM WEBNOTICE
+		</selectKey>
+		INSERT INTO WEBNOTICE VALUES(#{no}, #{id}, #{name}, sysdate, #{title}, #{subject})
+	</insert>
+	<update id="noticeUpdate" parameterType="co.nero.WebExam.notice.service.NoticeVO">
+		UPDATE WEBNOTICE
+	<set>
+      <if test="title != null">TITLE=#{title},</if>
+      <if test="subject != null">SUBJECT=#{subject}</if>
+    </set>
+    	WHERE NO = #{no}
+	</update>
+	<delete id="noticeDelete" parameterType="co.nero.WebExam.notice.service.NoticeVO">
+		DELETE FROM WEBNOTICE WHERE NO = #{no}
+	</delete>
+</mapper>
